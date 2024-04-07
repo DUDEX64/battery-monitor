@@ -27,9 +27,9 @@ uint16_t BatteryCharge()
 
 bool AdapterOnline()
 {
-    bool online;
     if (adptfile.good())
     {
+        bool online;
         adptfile.seekg(0);
         adptfile >> online;
         return online;
