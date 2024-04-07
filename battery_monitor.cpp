@@ -16,13 +16,13 @@ uint16_t BatteryCharge()
     {
         batfile.seekg(0);
         batfile >> charge;
+        return charge;
     }
     else
     {
         batfile.open(BatteryPath, std::ifstream::in);
-        charge = TripPoint;
+        return TripPoint;
     }
-    return charge;
 }
 
 bool AdapterOnline()
