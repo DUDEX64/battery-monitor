@@ -43,14 +43,18 @@ bool AdapterOnline() noexcept
 
 int main()
 {
+    // Open the battery and apdater files
     batfile.open(BatteryPath, std::ifstream::in);
     adptfile.open(AdapterPath, std::ifstream::in);
 
+    // While battery charge is good or we're connected to power
     while (BatteryCharge() > TripPoint || AdapterOnline())
         std::this_thread::sleep_for(std::chrono::seconds(charge*ChargeMultiplier));
 
+    // Spam the TriggerCommand until exit status is zero
     while (system(TriggerCommand))
         std::this_thread::sleep_for(std::chrono::seconds(charge));
 
+    // System is shutting down, exit zero
     return 0;    
 }
