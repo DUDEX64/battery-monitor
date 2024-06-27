@@ -51,6 +51,12 @@ int main()
     while (BatteryCharge() > TripPoint || AdapterOnline())
         std::this_thread::sleep_for(std::chrono::seconds(charge*ChargeMultiplier));
 
+    // Tell user we're going down
+    #ifdef TriggerMessage
+    std::cout << TriggerMessage << std::endl;
+    system("wall " TriggerMessage);
+    #endif
+
     // Spam the TriggerCommand until exit status is zero
     while (system(TriggerCommand))
         std::this_thread::sleep_for(std::chrono::seconds(charge));

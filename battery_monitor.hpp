@@ -3,3 +3,4 @@
 #define TripPoint 30
 #define ChargeMultiplier 5
 #define TriggerCommand "poweroff"
+#define TriggerMessage "System shutdown due to power supply!"
