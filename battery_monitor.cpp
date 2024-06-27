@@ -10,7 +10,7 @@ std::ifstream batfile;
 std::ifstream adptfile;
 uint16_t charge;
 
-uint16_t BatteryCharge()
+uint16_t BatteryCharge() noexcept
 {
     if (batfile.good())
     {
@@ -25,7 +25,7 @@ uint16_t BatteryCharge()
     return charge;
 }
 
-bool AdapterOnline()
+bool AdapterOnline() noexcept
 {
     if (adptfile.good())
     {
