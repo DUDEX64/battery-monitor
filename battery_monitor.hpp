@@ -4,7 +4,7 @@
 // The path to the adapter's online file
 #define AdapterPath "/sys/class/power_supply/ACAD/online"
 
-// The battery percentage to at which we should shutdown the system
+// The battery percentage at which we should shutdown the system
 #define TripPoint 30
 
 // Multiply the current battery charge by this number to get the polling interval in seconds
@@ -14,5 +14,5 @@
 #define TriggerCommand "poweroff"
 
 /* The message to display before calling TriggerCommand
-    OPTIONAL: Comment if no message desired. */
+    OPTIONAL: Comment out if no message desired. */
 #define TriggerMessage "System shutdown due to power supply!"
