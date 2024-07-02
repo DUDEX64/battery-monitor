@@ -14,6 +14,10 @@ uint16_t charge;
 #define OpenBattery() batfile.open(BatteryPath, std::ifstream::in);
 #define OpenAdapter() adptfile.open(AdapterPath, std::ifstream::in);
 
+/*
+    Returns the battery charge in percent unless 
+    disconnected or error, which returns TripPoint
+*/
 uint16_t BatteryCharge() noexcept
 {
     if (batfile.good())
@@ -29,6 +33,7 @@ uint16_t BatteryCharge() noexcept
     return charge;
 }
 
+// Returns true if adapter connected and no errors, false otherwise
 bool AdapterOnline() noexcept
 {
     if (adptfile.good())
@@ -45,7 +50,9 @@ bool AdapterOnline() noexcept
     }
 }
 
-int main()
+
+// Program entry point
+int main(void)
 {
     // Open the battery and apdater files
     OpenBattery(); OpenAdapter();
