@@ -10,6 +10,10 @@ std::ifstream batfile;
 std::ifstream adptfile;
 uint16_t charge;
 
+// Macro functions for opening battery and adapter files
+#define OpenBattery() batfile.open(BatteryPath, std::ifstream::in);
+#define OpenAdapter() adptfile.open(AdapterPath, std::ifstream::in);
+
 uint16_t BatteryCharge() noexcept
 {
     if (batfile.good())
@@ -19,7 +23,7 @@ uint16_t BatteryCharge() noexcept
     }
     else
     {
-        batfile.open(BatteryPath, std::ifstream::in);
+        OpenBattery();
         charge = TripPoint;
     }
     return charge;
@@ -36,7 +40,7 @@ bool AdapterOnline() noexcept
     }
     else
     {
-        adptfile.open(AdapterPath, std::ifstream::in);
+        OpenAdapter();
         return false;
     }
 }
@@ -44,8 +48,7 @@ bool AdapterOnline() noexcept
 int main()
 {
     // Open the battery and apdater files
-    batfile.open(BatteryPath, std::ifstream::in);
-    adptfile.open(AdapterPath, std::ifstream::in);
+    OpenBattery(); OpenAdapter();
 
     // While battery charge is good or we're connected to power
     while (BatteryCharge() > TripPoint || AdapterOnline())
