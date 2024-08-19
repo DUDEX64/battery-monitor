@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <thread>
 #include <chrono>
+#include <exception>
 
 #include "battery_monitor.hpp"
 
@@ -20,14 +21,14 @@ uint16_t charge;
 */
 uint16_t BatteryCharge() noexcept
 {
-    if (batfile.good())
+    try 
     {
         batfile.seekg(0);
         batfile >> charge;
     }
-    else
+    catch(...)
     {
-        OpenBattery();
+        try {OpenBattery();} catch (...) {;};
         charge = TripPoint;
     }
     return charge;
@@ -36,16 +37,16 @@ uint16_t BatteryCharge() noexcept
 // Returns true if adapter connected and no errors, false otherwise
 bool AdapterOnline() noexcept
 {
-    if (adptfile.good())
+    try
     {
         bool online;
         adptfile.seekg(0);
         adptfile >> online;
         return online;
     }
-    else
+    catch(...)
     {
-        OpenAdapter();
+        try{OpenAdapter();} catch(...) {;};
         return false;
     }
 }

@@ -3,6 +3,7 @@
         "iosfwd": "cpp",
         "istream": "cpp",
         "xiosbase": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "stdexcept": "cpp"
     }
 }
