@@ -4,6 +4,8 @@
         "istream": "cpp",
         "xiosbase": "cpp",
         "thread": "cpp",
-        "stdexcept": "cpp"
+        "stdexcept": "cpp",
+        "exception": "cpp",
+        "chrono": "cpp"
     }
 }

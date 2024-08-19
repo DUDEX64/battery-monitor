@@ -9,7 +9,7 @@
 
 std::ifstream batfile;
 std::ifstream adptfile;
-uint16_t charge;
+uint16_t charge = 100;
 
 // Macro functions for opening battery and adapter files
 #define OpenBattery() batfile.open(BatteryPath, std::ifstream::in);
@@ -46,7 +46,7 @@ bool AdapterOnline() noexcept
     }
     catch(...)
     {
-        try{OpenAdapter();} catch(...) {;};
+        try {OpenAdapter();} catch(...) {;};
         return false;
     }
 }
@@ -59,7 +59,7 @@ int main(void)
     OpenBattery(); OpenAdapter();
 
     // While battery charge is good or we're connected to power
-    while (BatteryCharge() > TripPoint || AdapterOnline())
+    while (AdapterOnline() || BatteryCharge() > TripPoint)
         std::this_thread::sleep_for(std::chrono::seconds(charge*ChargeMultiplier));
 
     // Tell user we're going down
