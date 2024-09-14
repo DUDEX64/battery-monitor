@@ -12,8 +12,8 @@ std::ifstream adptfile;
 uint16_t charge = 100;
 
 // Macro functions for opening battery and adapter files
-#define OpenBattery() batfile.open(BatteryPath, std::ifstream::in);
-#define OpenAdapter() adptfile.open(AdapterPath, std::ifstream::in);
+#define OpenBattery() batfile.open(BatteryPath, std::ifstream::in)
+#define OpenAdapter() adptfile.open(AdapterPath, std::ifstream::in)
 
 /*
     Returns the battery charge in percent unless 
