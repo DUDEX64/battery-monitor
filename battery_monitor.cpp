@@ -60,7 +60,14 @@ int main(void)
 
     // While battery charge is good or we're connected to power
     while (AdapterOnline() || BatteryCharge() > TripPoint)
-        std::this_thread::sleep_for(std::chrono::seconds(charge*ChargeMultiplier));
+    {
+        std::this_thread::sleep_for(std::chrono::milliseconds(
+            static_cast<size_t>(static_cast<float>(charge)
+                *static_cast<float>(ChargeMultiplier)
+                *static_cast<float>(1000.0)
+            )
+        ));
+    }
 
     // Tell user we're going down
     #ifdef TriggerMessage
