@@ -1,0 +1,8 @@
+[Unit]
+Description=Monitors power-supply status and will poweroff the machine when needed.
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+ExecStart=/usr/bin/battery_monitor
