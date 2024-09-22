@@ -69,6 +69,9 @@ int main(void)
         ));
     }
 
+    // Close the battery and adapter files
+    batfile.close(); adptfile.close();
+
     // Tell user we're going down
     #ifdef TriggerMessage
     std::cout << TriggerMessage << std::endl;
