@@ -59,7 +59,7 @@ int main(void)
     OpenBattery(); OpenAdapter();
 
     // While battery charge is good or we're connected to power
-    while (AdapterOnline() || BatteryCharge() > TripPoint)
+    while (AdapterOnline() | (BatteryCharge() > TripPoint))
     {
         std::this_thread::sleep_for(std::chrono::milliseconds(
             static_cast<size_t>(static_cast<float>(charge)
