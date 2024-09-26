@@ -9,7 +9,7 @@
 
 std::ifstream batfile;
 std::ifstream adptfile;
-uint16_t charge = 100;
+uint16_t charge = TripPoint;
 
 // Macro functions for opening battery and adapter files
 #define OpenBattery() batfile.open(BatteryPath, std::ifstream::in)
