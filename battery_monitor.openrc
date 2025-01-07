@@ -1,0 +1,7 @@
+#!/sbin/openrc-run
+
+name=$RC_SVCNAME
+description="Monitors power-supply status and will poweroff the machine when needed."
+supervisor="supervise-daemon"
+command="/usr/bin/battery_monitor"
+command_args=""
